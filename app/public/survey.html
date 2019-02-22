@@ -115,7 +115,7 @@
                                 Statement 3
                             </h6>
                             <p class="grey-text text-darken-2 xtra nbs">
-                                Cold weather gear is for cold weather.
+                                Brakes are death.
                             </p>
                         </div>
                 </div>
@@ -207,7 +207,7 @@
                                 Statement 7
                             </h6>
                             <p class="grey-text text-darken-2 xtra nbs">
-                                Spare tubes, multi-tools and repair kits should be stored in jersey pockets.
+                                Spare tubes, multi-tools and repair kits should be stored in jersey pockets only.
                             </p>
                         </div>
                 </div>
@@ -253,7 +253,7 @@
                                 Statement 9
                             </h6>
                             <p class="grey-text text-darken-2 xtra nbs">
-                                Saddles, bars, and tires shall be carefully matched
+                                Saddles, bars, and tires shall be carefully matched.
                             </p>
                         </div>
                 </div>
@@ -302,13 +302,6 @@
 
                 </div>
              </div>
-
-
-
-
-           
-
-     
          </div>
        </div>
      
@@ -370,19 +363,21 @@
 
             $("#survey").submit((event) => { 
                 
-                alert($("#your_name").val());
                 event.preventDefault();
-                let scores = [];
+                let scores = "";
                 for(i = 1; i < 11; i++) {
-                    scores.push($("#sl" + i).val());
+                    scores += $("#sl" + i).val() + ", ";
                 }
-                console.log(scores);
+                scores = scores.slice(0,-2);
+
                 let formData = {
                     "name": $("#your_name").val(),
                     "photo": $("#your_photo").val(),
-                    "scores": scores //$("#sl" + i).val()
+                    "scores": scores
                 }
-                console.log(formData);
+
+                $.post("/api/friends", formData);
+
             });
        </script>
    </body>
