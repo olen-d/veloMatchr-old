@@ -351,14 +351,29 @@
          </div>
        </footer>
      
-     
+        <!-- Modal Structure -->
+        <div id="modal1" class="modal">
+            <div class="modal-content">
+                <h3>Your Riding Buddy is:</h3>
+                <div class="divider"></div>
+                <h4 id="match-name"></h4>
+                <p>
+                    <img id="match-photo" class="responsive-img" alt="">
+                </p>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-light red accent-4 white-text btn-flat">Dismiss</a>
+            </div>
+        </div>
+
        <!--  Scripts-->
        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
        <script src="js/materialize.js"></script>
 
        <script>
             $(document).ready(() => {
-                $('select').formSelect();
+                $("select").formSelect();
+                $(".modal").modal();
             });
 
             $("#survey").submit((event) => { 
@@ -376,7 +391,11 @@
                     "scores": scores
                 }
 
-                $.post("/api/friends", formData);
+                $.post("/api/friends", formData, function(matchData) {
+                    $("#match-name").text(matchData.name);
+                    $("#match-photo").attr("src", matchData.photo);
+                    $("#modal1").modal("open");
+                });
 
             });
        </script>

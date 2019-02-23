@@ -16,6 +16,7 @@ module.exports = (app) => {
             if(err) { throw err; }
 
             let scores = new Map();
+            let images = new Map();
 
             let diffs = [];
 
@@ -39,8 +40,9 @@ module.exports = (app) => {
                 // Save the name and score to the scores map
                 // A map was used since its more convenient to loop through than an object
                 scores.set(v.name, score);
-                
+                images.set(v.name, v.photo);
             }
+
             // Append the scores from the current survey to the file
             let appendData = {
                 "name": surveyRes.name,
@@ -62,8 +64,13 @@ module.exports = (app) => {
                 }
             }
 
-            // Modal dialog with the name and photo of the best match
-            console.log(minKey,minScore);
+            // Make the object for the name and photo of the best match to be pulled into the modal
+            let matchData = {
+                "name": minKey,
+                "photo": images.get(minKey)
+            }
+
+            res.json(matchData); 
         });
     });
 }
