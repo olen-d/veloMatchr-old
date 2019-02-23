@@ -1,14 +1,14 @@
 {
-  "name": "assignment_13",
+  "name": "VeloMatchr",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "start": "node server.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [cycling,bicycle,ride,match],
+  "author": "Olen Daelhousen",
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.4"
