@@ -4,7 +4,15 @@ module.exports = (app) => {
     const path = require("path");
 
     app.get("/api/friends", (req, res) => {
-        res.sendFile(path.join(__dirname , "../data" , "friends.js"))
+        fs.readFile(path.join(__dirname , "../data" , "friends.js"), "utf-8", (err, data) => {
+            if(err) { throw err; }
+
+            // Turn the file into JSON
+            // There was probably a fancier way to do this by putting the data in an array
+            // and using module.export, but this works and the JSON validates.
+            dataJSON = JSON.parse("[" + data + "]");
+            res.json(dataJSON);
+        });
     });
 
     app.post("/api/friends", (req, res) => {

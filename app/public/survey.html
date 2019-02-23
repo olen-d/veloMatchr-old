@@ -16,13 +16,17 @@
    </head>
    <body>
        <nav class="red accent-4" role="navigation">
-         <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo"><i class="fas fa-bicycle"></i></a>
+         <div class="nav-wrapper container"><a id="logo-container" href="/home" class="brand-logo"><i class="fas fa-bicycle"></i></a>
            <ul class="right hide-on-med-and-down">
-             <li><a href="#">Navbar Link</a></li>
+                <li><a href="/home">Home</a></li>
+                <li><a href="/api/friends">All Friends</a></li>
+                <li><a href="https://github.com/olen-d/FriendFinder">Github Repo</a></li>
            </ul>
      
            <ul id="nav-mobile" class="sidenav">
-             <li><a href="#">Navbar Link</a></li>
+                <li><a href="/home">Home</a></li>
+                <li><a href="/api/friends">All Friends</a></li>
+                <li><a href="https://github.com/olen-d/FriendFinder">Github Repo</a></li>
            </ul>
            <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
          </div>
@@ -41,11 +45,11 @@
                      </h5>
                      <form id="survey">
                         <div class="input-field col s12 l6">
-                            <input placeholder="Frederick Rosenstein" id="your_name" type="text" class="validate">
+                            <input placeholder="Frederick Rosenstein" id="your_name" type="text" class="validate" required>
                             <label for="your_name">Your Name (Required)</label>
                         </div>
                         <div class="input-field col s12 l6">
-                            <input placeholder="http://www.example.com/selfie.jpg" id="your_photo" type="text" class="validate">
+                            <input placeholder="http://www.example.com/selfie.jpg" id="your_photo" type="text" class="validate" required>
                             <label for="your_photo">Link to Your Photo (Required)</label>
                         </div>
                 </div>
@@ -365,6 +369,20 @@
                 <a href="#!" class="modal-close waves-effect waves-light red accent-4 white-text btn-flat">Dismiss</a>
             </div>
         </div>
+        
+        <!-- This isn't a particularly useful error statement, highlighting the missing fields is an area for future updates -->
+        <div id="modal2" class="modal">
+                <div class="modal-content">
+                    <h4>Statement(s) Not Answered</h4>
+                    <div class="divider"></div>
+                    <p>
+                        Please make sure you have agreed or disagreed with all statements. 
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-close waves-effect waves-light red accent-4 white-text btn-flat">Dismiss</a>
+                </div>
+            </div>
 
        <!--  Scripts-->
        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -372,6 +390,7 @@
 
        <script>
             $(document).ready(() => {
+                $('.sidenav').sidenav();
                 $("select").formSelect();
                 $(".modal").modal();
             });
@@ -385,18 +404,27 @@
                 }
                 scores = scores.slice(0,-2);
 
-                let formData = {
-                    "name": $("#your_name").val(),
-                    "photo": $("#your_photo").val(),
-                    "scores": scores
+                // Validate the scores to make sure none are empty, since
+                // the Materialize select won't work with HTML5's built
+
+                let regex = /null?/;
+                let scoresResult = scores.match(regex);
+
+                if(scoresResult) {
+                    $("#modal2").modal("open");
+                } else {
+                    let formData = {
+                        "name": $("#your_name").val(),
+                        "photo": $("#your_photo").val(),
+                        "scores": scores
+                    }
+
+                    $.post("/api/friends", formData, function(matchData) {
+                        $("#match-name").text(matchData.name);
+                        $("#match-photo").attr("src", matchData.photo);
+                        $("#modal1").modal("open");
+                    });
                 }
-
-                $.post("/api/friends", formData, function(matchData) {
-                    $("#match-name").text(matchData.name);
-                    $("#match-photo").attr("src", matchData.photo);
-                    $("#modal1").modal("open");
-                });
-
             });
        </script>
    </body>
