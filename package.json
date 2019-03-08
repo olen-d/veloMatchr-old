@@ -7,10 +7,18 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "keywords": ["cycling","bicycle","ride","match"],
+  "keywords": [
+    "cycling",
+    "bicycle",
+    "ride",
+    "match"
+  ],
   "author": "Olen Daelhousen",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.4"
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "mysql2": "^1.6.5",
+    "sequelize": "^4.43.0"
   }
 }
