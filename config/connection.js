@@ -1,7 +1,7 @@
 require("dotenv").config();
 
 const Sequelize = require("sequelize");
-const sequelize = new Sequelize("veloMatchr", process.env.DBUSER, process.env.DBPASS, {
+const sequelize = new Sequelize("velomatchr", process.env.DBUSER, process.env.DBPASS, {
   host: "localhost",
   dialect: 'mysql',
   operatorsAliases: false,
