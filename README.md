@@ -12,13 +12,13 @@ This project provides a way for bicylists to match up with others who have a sim
 
 ## Upcoming feature additions
 
+* Add geolocation to match users in the same area 
 * Use Firebase Realtime Database or similar to store matches
 * Add ability for users to login and save/delete matches
 * Allow users to directly upload a photo
 * Add ability for users to block and report other users
 * Add ability for users to approve matches
 * Enable users who have both approved a match to contact each other
-* Add geolocation to match users in the same area
 
 ## Project Maintenance
 
