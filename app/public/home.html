@@ -26,7 +26,7 @@
             <ul id="nav-mobile" class="sidenav">
                 <li><a href="/survey">Survey</a></li>
                 <li><a href="/api/friends">All Friends</a></li>
-                <li><a href="https://github.com/olen-d/FriendFinder">Github Repo</a></li>
+                <li><a href="https://github.com/olen-d/veloMatchr">Github Repo</a></li>
             </ul>
             <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
           </div>
@@ -38,11 +38,23 @@
             <div class="row center">
               <h5 class="header col s12 light">Find the riding buddy of your dreams.</h5>
             </div>
-            <div class="row center">
-              <a href="survey" id="survey-button" class="btn-large waves-effect waves-light red accent-4"><i class="fas fa-list-alt"></i> Get Started</a>
-            </div>
-            <br><br>
-      
+            <div class="row">
+              <div class="col s12 m6 center">
+                <a href="survey" id="survey-button" class="btn-large waves-effect waves-light red accent-4"><i class="fas fa-list-alt"></i> Get Started</a>
+              </div>
+              <div class="col s12 m6">
+                <form id="login">
+                  <div class="input-field col s12 m10 l8">
+                    <input id="your_email" type="text" class="validate" required>
+                    <label for="your_email">Your Email Address (Required)</label>
+                  </div>
+                  <div class="input-field col s12 m10 l8">
+                    <input id="your_password" type="password" class="validate" required>
+                    <label for="your_password">Your Password (Required)</label>
+                  </div>
+                </form>
+              </div>
+            </div>      
           </div>
         </div>
       
@@ -125,8 +137,26 @@
         <script src="js/materialize.js"></script>
 
         <script>
+ 
+
+          const locator = () => {
+            if ("geolocation" in navigator) {
+              navigator.geolocation.getCurrentPosition((position) => {
+                console.log(position.coords.latitude, position.coords.longitude);
+                // Post the lat, long to the api and search the db for nearby matches
+                // Return the number of nearby matches (within 5 miles)
+              });
+            } else {
+            /* geolocation IS NOT available */
+            // Ask for a city and state
+            // Then hit (probably) MapQuest to generate a lat/long
+            // In the database note that it was city/state and not accurate
+            }
+          }
+
           $(document).ready(() => {
               $('.sidenav').sidenav();
+              locator();
           });
         </script>
     </body>
