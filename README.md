@@ -8,7 +8,7 @@ Node.js app using a short survey and an algorithm to determine the potential com
 This project provides a way for bicylists to match up with others who have a similar cycling philosophy.
 
 ## Try VeloMatchr for yourself
-[VeloMatchr](https://heroku-velomatchr.herokuapp.com/ "VeloMatchr App")
+[VeloMatchr](https://www.velomatchr.com/ "VeloMatchr App")
 
 ## Upcoming feature additions
 
