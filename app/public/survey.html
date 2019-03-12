@@ -39,19 +39,48 @@
                 </div>
              </div>
              <div class="row">
-                 <div class="col s12">
+                 <div class="col 12">
                      <h5 class="orange-text text-darken-2">
                          About Yourself
                      </h5>
+                </div>
+            </div>
+            <div class="row">
                      <form id="survey">
                         <div class="input-field col s12 l6">
-                            <input placeholder="Frederick Rosenstein" id="your_name" type="text" class="validate" required>
-                            <label for="your_name">Your Name (Required)</label>
+                            <input placeholder="Frederick" id="first_name" type="text" class="validate" required>
+                            <label for="first_name">Your First Name (Required)</label>
                         </div>
                         <div class="input-field col s12 l6">
-                            <input placeholder="http://www.example.com/selfie.jpg" id="your_photo" type="text" class="validate" required>
-                            <label for="your_photo">Link to Your Photo (Required)</label>
+                            <input placeholder="Rosenstein" id="last_name" type="text" class="validate" required>
+                            <label for="last_name">Your Last Name (Required)</label>
                         </div>
+            </div>
+                <div class="row">
+                    <div class="input-field col s12 l6">
+                        <input placeholder="someone@example.com" id="email" type="email" class="validate" required>
+                        <label for="email">Your Email Address (Required)</label>
+                    </div>
+                    <div class="input-field col s12 l6">
+                        <input placeholder="404.867.5309" id="phone" type="tel">
+                        <label for="phone">Your Phone Number (Optional)</label>
+                    </div>                       
+                </div>
+                <div class="row">
+                    <div class="input-field col s12 l6">
+                        <input placeholder="http://www.example.com/selfie.jpg" id="your_photo" type="text" class="validate" required>
+                        <label for="your_photo">Link to Your Photo (Required)</label>
+                    </div>   
+                    <div class="input-field col s8 m5 l4">
+                        <select id="gender">
+                            <option value="" disabled selected>Select Your Gender</option>
+                            <option value="F">Female</option>
+                            <option value="M">Male</option>
+                            <option value="NB">Non-binary</option>
+                            <option value="NS">Prefer not to say</option>
+                        </select>
+                        <!-- <label>Materialize Select</label> -->
+                    </div>                                    
                 </div>
                 <div class="row">
                         <div class="col s12">
