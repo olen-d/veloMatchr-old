@@ -1,0 +1,270 @@
+<!doctype = "html">
+<html lang="en">
+   <head>
+       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+       <title>
+           VeloMatchr // Sign Up
+       </title>
+
+       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+       <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+       <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+
+       <!-- Font Awesome for the social icons -->
+       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+   </head>
+   <body>
+       <nav class="red accent-4" role="navigation">
+         <div class="nav-wrapper container"><a id="logo-container" href="/home" class="brand-logo"><i class="fas fa-bicycle"></i></a>
+           <ul class="right hide-on-med-and-down">
+                <li><a href="/home">Home</a></li>
+                <li><a href="/api/friends">All Friends</a></li>
+                <li><a href="https://github.com/olen-d/FriendFinder">Github Repo</a></li>
+           </ul>
+     
+           <ul id="nav-mobile" class="sidenav">
+                <li><a href="/home">Home</a></li>
+                <li><a href="/api/friends">All Friends</a></li>
+                <li><a href="https://github.com/olen-d/veloMatchr">Github Repo</a></li>
+           </ul>
+           <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+         </div>
+       </nav>
+       <div class="section no-pad-bot" id="index-banner">
+         <div class="container">
+             <div class="row">
+                <div class="col s12">
+                    <h4 class="header orange-text text-darken-2">Velomatchr Sign Up</h4>
+                </div>
+                <div class="col s12 m8 l6 xl5">
+                    <p>
+                        Welcome to VeloMatchr, please answer a few questions about yourself and your matches to create an account.
+                    </p>
+                </div>
+             </div>
+             <div class="row">
+                 <div class="col 12">
+                     <h5 class="orange-text text-darken-2">
+                         About Yourself
+                     </h5>
+                </div>
+            </div>
+            <div class="row">
+                     <form id="sign-up">
+                        <div class="input-field col s12 l6">
+                            <input placeholder="Frederick" id="first_name" type="text" class="validate" required>
+                            <label for="first_name">Your First Name (Required)</label>
+                        </div>
+                        <div class="input-field col s12 l6">
+                            <input placeholder="Rosenstein" id="last_name" type="text" class="validate" required>
+                            <label for="last_name">Your Last Name (Required)</label>
+                        </div>
+            </div>
+                <div class="row">
+                    <div class="input-field col s12 l6">
+                        <input placeholder="someone@example.com" id="email" type="email" class="validate" required>
+                        <label for="email">Your Email Address (Required)</label>
+                    </div>
+                    <div class="input-field col s12 l6">
+                        <input placeholder="404.867.5309" id="phone" type="tel">
+                        <label for="phone">Your Phone Number (Optional)</label>
+                    </div>                       
+                </div>
+                <div class="row">
+                    <div class="input-field col s12 l6">
+                        <input placeholder="http://www.example.com/selfie.jpg" id="your_photo" type="text" class="validate" required>
+                        <label for="your_photo">Link to Your Photo (Required)</label>
+                    </div>   
+                    <div class="input-field col s8 m5 l4">
+                        <select id="gender">
+                            <option value="" disabled selected>Select Your Gender</option>
+                            <option value="F">Female</option>
+                            <option value="M">Male</option>
+                            <option value="NB">Non-binary</option>
+                            <option value="NS">Prefer not to say</option>
+                        </select>
+                        <!-- <label>Materialize Select</label> -->
+                    </div>                                    
+                </div>
+                <div class="row">
+                        <div class="col s12">
+                            <h5 class="orange-text text-darken-2">
+                                About Your Matches
+                            </h5>
+                        </div>
+                </div>
+                <div class="row">
+                        <div class="col s12 m8 l6 xl5">
+                            <p>
+                                Please tell us your preferences regarding who you'd like to match with.
+                            </p>
+                        </div>
+                </div>
+                <div class="row nbs">
+                        <div class="col s12 m6 l5">
+                            <h6 class="header bold xtra">
+                                Proximity to Riding Buddies
+                            </h6>
+                            <p>
+                                Match with cyclists within...
+                            </p>
+                            <select id="sl1">
+                                <option value="" disabled selected>Select an Option</option>
+                                <option value="1">3 miles</option>
+                                <option value="2">6 miles</option>
+                                <option value="3">9 miles</option>
+                                <option value="4">12 miles</option>
+                                <option value="5">15 miles</option>
+                            </select>
+                            <!-- <label>Materialize Select</label> -->
+                        </div>                   
+                        <div class="col s12 m6 l5">
+                            <h6 class="header bold xtra">
+                                Gender Preferences
+                            </h6>
+                            <p>
+                                Match me with other cyclists...
+                            </p>
+                            <select id="sl2">
+                                <option value="" disabled selected>Select an Option</option>
+                                <option value="1">Of the same gender only</option>
+                                <option value="2">Of different genders only</option>
+                                <option value="3">Of all genders</option>
+                            </select>
+                            <!-- <label>Materialize Select</label> -->
+                        </div>                   
+                </div>
+                <div class="row center">
+                        <button type="submit" value="submit" id="survey-btn" class="btn-large waves-effect waves-light red accent-4" ><i class="fas fa-check-circle"></i> Find My Buddy
+                      </div>
+                      
+                <div class="row">
+                    </form>
+
+                </div>
+             </div>
+         </div>
+       </div>
+     
+     
+       <div class="container">
+         <div class="section">
+     
+           <!--   Icon Section   -->
+
+     
+         </div>
+         <br><br>
+       </div>
+     
+       <footer class="page-footer grey darken-4">
+         <div class="container">
+           <div class="row">
+             <div class="col l6 s12">
+               <h5 class="white-text">About</h5>
+               <p class="grey-text text-lighten-4">When we aren't on our bicycles, we build web applications that make life easier for cyclists, so they can get out and ride more. </p>
+     
+     
+             </div>
+             <div class="col l3 s12">
+               <h5 class="white-text">Made With</h5>
+               <ul>
+                <li><a class="white-text" href="http://www.fontawesome.com">Font Awesome</a></li>
+                <li><a class="white-text" href="http://jquery.com">jQuery</a></li>
+                <li><a class="white-text" href="http://materializecss.com">Materialize</a></li>
+               </ul>
+             </div>
+             <div class="col l3 s12">
+               <h5 class="white-text">Socialize</h5>
+               <ul>
+                 <li><a class="white-text" href="#!"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+                 <li><a class="white-text" href="#!"><i class="fab fa-instagram"></i> Instagram</a></li>
+                 <li><a class="white-text" href="#!"><i class="fab fa-twitter"></i> Twitter</a></li>
+                 <li><a class="white-text" href="#!"><i class="fab fa-youtube"></i> Youtube</a></li>
+               </ul>
+             </div>
+           </div>
+         </div>
+         <div class="footer-copyright">
+           <div class="container">
+           Copyright 2019 <a class="orange-text text-lighten-3" href="https://www.olen.dev/">Olen Daelhousen</a>
+           </div>
+         </div>
+       </footer>
+     
+        <!-- Modal Structure -->
+        <div id="modal1" class="modal">
+            <div class="modal-content">
+                <h3>Your Riding Buddy is:</h3>
+                <div class="divider"></div>
+                <h4 id="match-name"></h4>
+                <p>
+                    <img id="match-photo" class="responsive-img" alt="">
+                </p>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-light red accent-4 white-text btn-flat">Dismiss</a>
+            </div>
+        </div>
+        
+        <!-- This isn't a particularly useful error statement, highlighting the missing fields is an area for future updates -->
+        <div id="modal2" class="modal">
+                <div class="modal-content">
+                    <h4>Statement(s) Not Answered</h4>
+                    <div class="divider"></div>
+                    <p>
+                        Please make sure you have agreed or disagreed with all statements. 
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-close waves-effect waves-light red accent-4 white-text btn-flat">Dismiss</a>
+                </div>
+            </div>
+
+       <!--  Scripts-->
+       <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> <!-- Development version TODO: Update to production version -->
+       <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+       <script src="js/materialize.js"></script>
+
+       <script>
+            $(document).ready(() => {
+                $('.sidenav').sidenav();
+                $("select").formSelect();
+                $(".modal").modal();
+            });
+
+            $("#survey").submit((event) => { 
+                
+                event.preventDefault();
+                let scores = "";
+                for(i = 1; i < 11; i++) {
+                    scores += $("#sl" + i).val() + ", ";
+                }
+                scores = scores.slice(0,-2);
+
+                // Validate the scores to make sure none are empty, since
+                // the Materialize select won't work with HTML5's built
+
+                let regex = /null?/;
+                let scoresResult = scores.match(regex);
+
+                if(scoresResult) {
+                    $("#modal2").modal("open");
+                } else {
+                    let formData = {
+                        "name": $("#your_name").val(),
+                        "photo": $("#your_photo").val(),
+                        "scores": scores
+                    }
+
+                    $.post("/api/friends", formData, function(matchData) {
+                        $("#match-name").text(matchData.name);
+                        $("#match-photo").attr("src", matchData.photo);
+                        $("#modal1").modal("open");
+                    });
+                }
+            });
+       </script>
+   </body>
+</html>
