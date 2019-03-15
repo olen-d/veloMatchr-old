@@ -109,13 +109,13 @@
                             <p>
                                 Match with cyclists within...
                             </p>
-                            <select id="sl1">
+                            <select id="match_proximity">
                                 <option value="" disabled selected>Select an Option</option>
-                                <option value="1">3 miles</option>
-                                <option value="2">6 miles</option>
-                                <option value="3">9 miles</option>
-                                <option value="4">12 miles</option>
-                                <option value="5">15 miles</option>
+                                <option value="3">3 miles</option>
+                                <option value="6">6 miles</option>
+                                <option value="9">9 miles</option>
+                                <option value="12">12 miles</option>
+                                <option value="15">15 miles</option>
                             </select>
                             <!-- <label>Materialize Select</label> -->
                         </div>                   
@@ -126,19 +126,38 @@
                             <p>
                                 Match me with other cyclists...
                             </p>
-                            <select id="sl2">
+                            <select id="match_gender">
                                 <option value="" disabled selected>Select an Option</option>
-                                <option value="1">Of the same gender only</option>
-                                <option value="2">Of different genders only</option>
-                                <option value="3">Of all genders</option>
+                                <option value="same">Of the same gender only</option>
+                                <option value="different">Of different genders only</option>
+                                <option value="all">Of all genders</option>
                             </select>
                             <!-- <label>Materialize Select</label> -->
                         </div>                   
                 </div>
-                <div class="row center">
-                        <button type="submit" value="submit" id="survey-btn" class="btn-large waves-effect waves-light red accent-4" ><i class="fas fa-check-circle"></i> Find My Buddy
-                      </div>
-                      
+                <div class="row section">
+                        <div class="col s12">
+                            <h5 class="orange-text text-darken-2">
+                                Your Account
+                            </h5>
+                        </div>
+                </div>
+                <div class="row">
+                        <form id="sign-up">
+                           <div class="input-field col s12 l6">
+                               <input id="user_name" type="text" class="validate" required>
+                               <label for="user_name">User Name (Required)</label>
+                           </div>
+                           <div class="input-field col s12 l6">
+                               <input id="password" type="password" class="validate" required>
+                               <label for="password">Choose a Password (Required)</label>
+                           </div>
+               </div>              
+               <div class="row center">
+                    <div class="section extra-space">
+                        <button type="submit" value="submit" id="survey-btn" class="btn-large waves-effect waves-light red accent-4" ><i class="fas fa-check-circle"></i> Sign Me Up!
+                    </div>
+                </div>        
                 <div class="row">
                     </form>
 
@@ -234,36 +253,44 @@
                 $(".modal").modal();
             });
 
-            $("#survey").submit((event) => { 
+            $("#sign-up").submit((event) => { 
                 
                 event.preventDefault();
-                let scores = "";
-                for(i = 1; i < 11; i++) {
-                    scores += $("#sl" + i).val() + ", ";
-                }
-                scores = scores.slice(0,-2);
+                
+                // let scores = "";
+                // for(i = 1; i < 11; i++) {
+                //     scores += $("#sl" + i).val() + ", ";
+                // }
+                // scores = scores.slice(0,-2);
 
                 // Validate the scores to make sure none are empty, since
                 // the Materialize select won't work with HTML5's built
 
-                let regex = /null?/;
-                let scoresResult = scores.match(regex);
+                // let regex = /null?/;
+                // let scoresResult = scores.match(regex);
 
-                if(scoresResult) {
-                    $("#modal2").modal("open");
-                } else {
-                    let formData = {
-                        "name": $("#your_name").val(),
-                        "photo": $("#your_photo").val(),
-                        "scores": scores
-                    }
-
-                    $.post("/api/friends", formData, function(matchData) {
-                        $("#match-name").text(matchData.name);
-                        $("#match-photo").attr("src", matchData.photo);
-                        $("#modal1").modal("open");
-                    });
+                // if(scoresResult) {
+                //     $("#modal2").modal("open");
+                // } else {
+                let formData = {
+                    "firstName": $("#first_name").val(),
+                    "lastName": $("#last_name").val(),
+                    "email": $("#email").val(),
+                    "phone": $("#phone").val(),
+                    "yourPhoto": $("#your_photo").val(),
+                    "gender": $("#gender").val(),
+                    "matchProximity": $("#match_proximity").val(),
+                    "matchGender": $("#match_gender").val(),
+                    "userName": $("#user_name").val(),
+                    "password": $("#password").val()
                 }
+
+                $.post("/api/signup", formData) //, function(matchData) {
+                    // $("#match-name").text(matchData.name);
+                    // $("#match-photo").attr("src", matchData.photo);
+                    // $("#modal1").modal("open");
+                //});
+                // }
             });
        </script>
    </body>

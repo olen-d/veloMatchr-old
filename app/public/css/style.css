@@ -3,6 +3,10 @@
     padding-bottom:0px;
 }
 
+.extra-space {
+    padding-top:4rem;
+}
+
 .bold {
     font-weight:600;
 }

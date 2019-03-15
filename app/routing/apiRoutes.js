@@ -2,6 +2,7 @@ module.exports = (app) => {
     
     const fs = require("fs");
     const path = require("path");
+    const bcrypt = require("./../../helpers/bcrypt.js");
 
     app.get("/api/friends", (req, res) => {
         fs.readFile(path.join(__dirname , "../data" , "friends.js"), "utf-8", (err, data) => {
@@ -80,5 +81,15 @@ module.exports = (app) => {
 
             res.json(matchData); 
         });
+    });
+
+    app.post("/api/signup", (req, res) => {
+        const formData = req.body;
+        bcrypt.newPass(formData.password).then(function(res) {
+            console.log(res.passwordHash);
+            console.log(formData);
+        });
+
+        
     });
 }
