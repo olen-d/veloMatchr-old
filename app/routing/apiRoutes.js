@@ -3,6 +3,7 @@ module.exports = (app) => {
     const fs = require("fs");
     const path = require("path");
     const bcrypt = require("./../../helpers/bcrypt-module.js");
+    const db = require("../../models");
 
     app.get("/api/friends", (req, res) => {
         fs.readFile(path.join(__dirname , "../data" , "friends.js"), "utf-8", (err, data) => {
@@ -85,11 +86,28 @@ module.exports = (app) => {
 
     app.post("/api/signup", (req, res) => {
         const formData = req.body;
-        bcrypt.newPass(formData.password).then(function(res) {
-            console.log(res.passwordHash);
-            console.log(formData);
+        bcrypt.newPass(formData.password).then(function(pwdRes) {
+            if(pwdRes.status == 200) {
+                db.User.create({
+                    name: formData.userName,
+                    password: pwdRes.passwordHash,
+                    firstName: formData.firstName,
+                    lastName: formData.lastName,
+                    email: formData.email,
+                    phone: formData.phone,
+                    photoLink: formData.yourPhoto,
+                    gender: formData.gender,
+                    city: "blank",
+                    state: "blank",
+                    stateCode: "blank",
+                    country: "blank",
+                    countryCode: "bla"
+                }).then(newUser => {
+                res.json(newUser);
+                });
+            } else {
+                throw error;
+            }
         });
-
-        
     });
 }

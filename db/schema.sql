@@ -10,6 +10,7 @@ CREATE TABLE user(
     lastName VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
     phone VARCHAR(20),
+    photoLink VARCHAR(255)
     gender VARCHAR(2),
     city VARCHAR(255),
     state VARCHAR(255),
