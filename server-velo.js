@@ -12,7 +12,4 @@ app.use(express.static("app/public"));
 const apiRoutes = require("./app/routing/apiRoutes")(app);
 const htmlRoutes = require("./app/routing/htmlRoutes")(app);
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
-
-
-const db = require("./models/velomatchr.js");
+app.listen(port, () => console.log(`VeloMatchr is listening on port ${port}!`));
